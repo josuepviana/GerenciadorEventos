@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+    xmlns:th="http://thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Gerenciador de Eventos</title>
+</head>
+<body>
+<div class="container">
+    <h1>Lista de Eventos</h1>
+    <table class="highlight centered responsive-table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Ministrador</th>
+                <th>Local</th>
+                <th>Data</th>
+                <th>Começa às</th>
+                <th>Termina às</th>
+            </tr>
+        </thead>
+
+        <tbody th:each="evento : ${eventos}">
+            <tr>
+                <td><a th:href="${(#mvc.url('EC#detalhesEvento').arg(0, evento.codigo)).build()}"><span th:text="${evento.nome}"></span></a></td>
+                <td><span th:text="${evento.ministrador}"></span></td>
+                <td><span th:text="${evento.local}"></span></td>
+                <td><span th:text="${evento.data}"></span></td>
+                <td><span th:text="${evento.horarioInicio}"></span></td>
+                <td><span th:text="${evento.horarioFim}"></span></td>
+            </tr>
+        </tbody>
+    </table>
+    <a style="margin-top: 20px" href="/cadastrarEvento" class="waves-effect waves-light btn"><i class="material-icons left">add</i>Cadastrar Evento</a>
+</div>
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+</html>
