@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+<<<<<<< HEAD
+      xmlns="http://www.w3.org/1999/xhtml"
+=======
+>>>>>>> d8f89d01ae4f162fbf64f9862e1c1d5569002c0a
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="../materialize/css/materialize.min.css"  media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Detalhes do Evento</title>
+</head>
+<body>
+<div class="container">
+    <h1>Detalhes</h1>
+        <div th:each="evento : ${evento}">
+            <div class="row">
+                <p>Nome: <span th:text="${evento.nome}"></span></p>
+                <p>Ministrador: <span th:text="${evento.ministrador}"></span></p>
+                <p>Local: <span th:text="${evento.local}"></span></p>
+                <p>Data: <span th:text="${evento.data}"></span></p>
+<<<<<<< HEAD
+                <p>Começa às: <span th:text="${evento.horarioInicio}"></span></p>
+                <p>Termina às: <span th:text="${evento.horarioFim}"></span></p>
+            </div>
+
+            <!-- Erro da JetBrains ainda em verificação (31/07/22) nao reconhece 'th:block'
+             Fonte: https://youtrack.jetbrains.com/issue/IDEA-246664
+             -->
+            <th:block th:include="mensagemValidacao" />
+
+            <h3>Cadastrar Convidados</h3>
+            <form method="post">
+                <p>Nome: <input class="input-field col s4" type="text" name="nomeConvidado" value=""/></p>
+                <p>RG: <input class="input-field col s4" type="number" name="rg" value=""/></p>
+
+                <button type="submit" class="waves-effect waves-green green darken-2 btn"><i class="material-icons left">check</i>Adicionar</button>
+            </form>
+
+            <h3>Lista de Convidados</h3>
+            <table class="container">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>RG</th>
+                        <th>Deletar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="convidado : ${convidados}">
+                            <td><span th:text="${convidado.nomeConvidado}"></span></td>
+                            <td><span th:text="${convidado.rg}"></span></td>
+                            <td><a class="waves-effect waves-red red darken-3 btn" th:href="${(#mvc.url('EC#deletarConvidado').arg(0, convidado.rg)).build()}"><i class="material-icons">delete</i></a></td>
+                    </tr>
+                </tbody>
+            </table>
+=======
+                <p>Começa às:<span th:text="${evento.horarioInicio}"></span></p>
+                <p>Termina às:<span th:text="${evento.horarioFim}"></span></p>
+            </div>
+>>>>>>> d8f89d01ae4f162fbf64f9862e1c1d5569002c0a
+        </div>
+    <a href="/eventos" class="waves-effect waves-red red darken-3 btn"><i class="material-icons left">navigate_before</i>Voltar</a>
+</div>
+<!--JavaScript at end of body for optimized loading-->
+<script type="text/javascript" src="../materialize/js/materialize.min.js"></script>
+</body>
+</html>
